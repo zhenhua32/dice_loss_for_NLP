@@ -3,7 +3,8 @@
 
 # file: train.py
 #
-
+import sys
+sys.path.insert(0, r"D:\code\github\dice_loss_for_NLP")
 import os
 import re
 import argparse

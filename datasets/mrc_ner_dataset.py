@@ -103,7 +103,8 @@ class MRCNERDataset(Dataset):
             add_special_tokens=True,
             max_length=self.max_length,
             return_overflowing_tokens=True,
-            return_token_type_ids=True)
+            return_token_type_ids=True,
+            truncation="only_second")
 
         if tokenizer.pad_token_id in query_context_tokens["input_ids"]:
             non_padded_ids = query_context_tokens["input_ids"][: query_context_tokens["input_ids"].index(tokenizer.pad_token_id)]
