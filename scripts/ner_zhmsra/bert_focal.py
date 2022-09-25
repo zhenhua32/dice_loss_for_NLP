@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 
-env_file = os.path.join(os.path.dirname(__file__), ".env")
+env_file = os.path.join(os.path.dirname(__file__), "focal_env")
 result = load_dotenv(env_file, verbose=True)
 print("load env", result)
 
@@ -33,18 +33,15 @@ python "D:\\code\\github\\dice_loss_for_NLP\\tasks\\mrc_ner\\train.py" \
 --weight_start {os.environ["W_START"]} \
 --weight_end {os.environ["W_END"]} \
 --weight_span {os.environ["W_SPAN"]} \
---dice_smooth {os.environ["DICE_SMOOTH"]} \
---dice_ohem {os.environ["DICE_OHEM"]} \
---dice_alpha {os.environ["DICE_ALPHA"]} \
---dice_square \
+--focal_gamma {os.environ["FOCAL_GAMMA"]} \
 --warmup_proportion {os.environ["WARMUP_PROPORTION"]} \
 --span_loss_candidates gold_pred_random \
---construct_entity_span start_and_end \
+--construct_entity_span start_end_match \
 --num_labels 1 \
 --flat_ner \
 --is_chinese \
 --pred_answerable "train_infer" \
---answerable_task_ratio 0.3 \
+--answerable_task_ratio 0.2 \
 --activate_func relu \
 --data_sign zh_msra
 """.strip()
@@ -52,11 +49,3 @@ python "D:\\code\\github\\dice_loss_for_NLP\\tasks\\mrc_ner\\train.py" \
 print(cmd)
 
 os.system(cmd)
-
-"""
-输出结果为
-DATALOADER:0 TEST RESULTS
-{'test_span_f1': tensor(0.9463, device='cuda:0'),
- 'test_span_precision': tensor(0.9454, device='cuda:0'),
- 'test_span_recall': tensor(0.9472, device='cuda:0')}
-"""
