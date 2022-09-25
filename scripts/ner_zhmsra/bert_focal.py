@@ -49,3 +49,11 @@ python "D:\\code\\github\\dice_loss_for_NLP\\tasks\\mrc_ner\\train.py" \
 print(cmd)
 
 os.system(cmd)
+
+"""
+输出结果为
+DATALOADER:0 TEST RESULTS
+{'test_span_f1': tensor(0.9349, device='cuda:0'),
+ 'test_span_precision': tensor(0.9435, device='cuda:0'),
+ 'test_span_recall': tensor(0.9265, device='cuda:0')}
+"""
